@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React JS - Fundamentals</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // Button component
+      function Button({ variant = 'default', className, children, ...props }) {
+        const buttonVariants = {
+          default: 'bg-gray-300 text-black',
+          primary: 'bg-blue-500 text-white',
+          secondary: 'bg-gray-500 text-white',
+        };
+        return (
+          <button
+            className={`${buttonVariants[variant]} ${className} p-2 rounded`}
+            {...props}
+          >
+            {children}
+          </button>
+        );
+      }
+      // App component
+      function App() {
+        return (
+          <main className='flex gap-2 p-3'>
+            <Button variant='primary' title='Primary Button'>
+              Click Me 1
+            </Button>
+            <Button
+              variant='secondary'
+              title='Secondary Button'
+              className='uppercase'
+            >
+              Click Me 2
+            </Button>
+            <Button title='Default Button'>Click Me 2</Button>
+          </main>
+        );
+      }
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>

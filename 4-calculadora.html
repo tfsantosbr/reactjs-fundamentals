@@ -147,6 +147,38 @@
 
     // Calculator Component
     function Calculator() {
+
+      const buttons = [
+        [
+          { text: "CE" },
+          { text: "C", className: "h-16 flex-1" },
+          { text: "/", variant: "primary" },
+        ],
+        [
+          { text: "7" },
+          { text: "8" },
+          { text: "9" },
+          { text: "X", variant: "primary" },
+        ],
+        [
+          { text: "4" },
+          { text: "5" },
+          { text: "6" },
+          { text: "-", variant: "primary" },
+        ],
+        [
+          { text: "1" },
+          { text: "2" },
+          { text: "3" },
+          { text: "+", variant: "primary" },
+        ],
+        [
+          { text: "0", className: "h-16 flex-1" },
+          { text: "," },
+          { text: "=", variant: "primary" },
+        ]
+      ];
+
       return (
         <Card
           className={`
@@ -156,34 +188,23 @@
         >
           <CalculatorDisplay operation="1 + 1" result="2" />
           <div className="flex flex-col gap-3">
-            <div className="flex gap-3">
-              <Button className="h-16 w-16">CE</Button>
-              <Button className="h-16 flex-1">C</Button>
-              <Button className="h-16 w-16" variant="primary">/</Button>
-            </div>
-            <div className="flex gap-3">
-              <Button className="h-16 w-16">7</Button>
-              <Button className="h-16 w-16">8</Button>
-              <Button className="h-16 w-16">9</Button>
-              <Button className="h-16 w-16" variant="primary">X</Button>
-            </div>
-            <div className="flex gap-3">
-              <Button className="h-16 w-16">4</Button>
-              <Button className="h-16 w-16">5</Button>
-              <Button className="h-16 w-16">6</Button>
-              <Button className="h-16 w-16" variant="primary">-</Button>
-            </div>
-            <div className="flex gap-3">
-              <Button className="h-16 w-16">1</Button>
-              <Button className="h-16 w-16">2</Button>
-              <Button className="h-16 w-16">3</Button>
-              <Button className="h-16 w-16" variant="primary">+</Button>
-            </div>
-            <div className="flex gap-3">
-              <Button className="h-16 flex-1">0</Button>
-              <Button className="h-16 w-16">,</Button>
-              <Button className="h-16 w-16" variant="primary">=</Button>
-            </div>
+            {buttons
+              .map((row, index) =>
+                <div key={`row-${index}`} className="flex gap-3">
+                  {
+                    row.map((button, index) =>
+                      <Button
+                        className={button.className || "h-16 w-16"}
+                        variant={button.variant}
+                      >
+                        {button.text}
+                      </Button>
+                    )
+                  }
+                </div>
+              )
+            }
+
           </div>
         </Card>
       )

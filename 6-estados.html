@@ -20,11 +20,41 @@
 
       const [counter, setCounter] = React.useState(0);
 
+      if (counter == 20) {
+        return (
+          <div>
+            <p>Chegou no limite de 20</p>
+            <p>
+              <button type="button" onClick={() => setCounter(0)}>
+                Resetar
+              </button>
+            </p>
+          </div>
+        )
+      }
+
       return (
         <div>
           <p>Contador: {counter}</p>
-          <p><button type="button" onClick={() => setCounter(counter + 1)}>Atualizar</button></p>
-        </div>
+          <p>{counter > 10 ? 'Maior que 10' : 'Menor ou igual a 10'}</p>
+
+          {counter > 15 && <p>ATENÇÃO - Counter maior que 15</p>}
+          <p>
+            <button type="button" onClick={() => setCounter(0)}>
+              Resetar
+            </button>
+          </p>
+          <p>
+            <button type="button" onClick={() => setCounter((prevValue) => prevValue + 1)}>
+              Incrementar
+            </button>
+          </p>
+          <p>
+            <button type="button" onClick={() => setCounter((prevValue) => prevValue - 1)}>
+              Decrementar
+            </button>
+          </p>
+        </div >
       )
     }
 

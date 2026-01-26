@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>React JS - Fundamentals</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocketseat - React.js - Fundamentos</title>
 </head>
 
 <body>
@@ -15,26 +15,26 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">
-
     function ListNames() {
-      const [names] = React.useState(["Ana", "Bruno", "Carlos", "Daniel", "Evandro"]);
-      const [search, setSearch] = React.useState("");
+      const [names] = React.useState(["Ana", "Bruno", "Carlos", "Aline", "Daniel", "Eduardo"]);
+      const [search, setSearch] = React.useState("")
 
       return (
-        <div>
+        <ul>
           <input
             type="text"
-            placeholder="Filtrar por nome..."
+            placeholder="Buscar por nome..."
             value={search}
-            onChange={event => setSearch(event.target.value)}
+            onChange={e => setSearch(e.target.value)}
           />
-          <ul>
-            {names
-              .filter((name) => name.toLowerCase().includes(search.toLowerCase()))
-              .map((name, index) => <li key={`${index}-${name}`}>{name}</li>)
-            }
-          </ul>
-        </div>
+          {names
+            .filter((name) =>
+              name.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((name, index) => (
+              <li key={`${index}-${name}`}>{name}</li>
+            ))}
+        </ul>
       )
     }
 
